@@ -13,19 +13,23 @@
     <div class="container">
         <div class="screen">
             <div class="screen__content">
-                <form class="login">
+                <form class="login" method="post">
                     <div class="login__field">
                         <ion-icon name="person-outline"></ion-icon>
-                        <input type="text" class="login__input" placeholder="User name / Email">
+                        <input type="text" name="name" class="login__input" placeholder="Nombre Usuario">
+                    </div>
+                    <div class="login__field">
+                        <ion-icon name="mail-outline"></ion-icon>
+                        <input type="email" name="email" class="login__input" placeholder="Email">
                     </div>
                     <div class="login__field">
                         <ion-icon name="lock-open-outline"></ion-icon>
-                        <input type="password" class="login__input" placeholder="Password">
+                        <input type="password" name="password" class="login__input" placeholder="Contraseña">
                     </div>
-                    <button class="button login__submit">
+                    <button name="register" type="submit" class="button login__submit">
                         <span class="button__text">Log In Now</span>
-                        <i class="button__icon fas fa-chevron-right"></i>
-                    </button>				
+                        <ion-icon name="chevron-forward-outline"></ion-icon>
+                    </button>			
                 </form>
                 <div class="social-login">
                     <h3>log in via</h3>
@@ -42,5 +46,8 @@
             </div>		
         </div>
     </div>
+    <?php 
+        include("../php/registrar.php");
+    ?>
 </body>
 </html>
