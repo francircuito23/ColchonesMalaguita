@@ -1,0 +1,25 @@
+/* body{
+    margin: 0;
+
+} */
+
+/* .opaco{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    width: 100%;
+    background-color: rgba(117, 106, 106, 0.644);
+}
+   */
+.cancelado{
+    
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 50px 50px;
+    background-color: rgb(80, 72, 72);
+    border-radius: 2px;
+    width: 7%      
+}
