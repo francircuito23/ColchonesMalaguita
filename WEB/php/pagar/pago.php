@@ -1,14 +1,22 @@
+<?php
+
+    require '../configCarro.php';
+    $total = 1;
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Paypal</title>
-    <link rel="stylesheet" href="paypal.css">
-    <script src="https://www.paypal.com/sdk/js?client-id=Ae26Wo0DGc-aTnLARCnJWud5tdWqHeRD4_rT5DthyDSeNh6ypkC5-hNB1LxCyJspBY8Q46GA4hU37lF9&currency=EUR"></script>
+    <link rel="stylesheet" href="../../paypal/paypal.css">
+    <title>Pago</title>
 </head>
 <body>
+    
+    <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo CURRENCY; ?>"></script>
+
     <div id="paypal-button-container"></div>
 
     <script>
@@ -22,16 +30,30 @@
                 return actions.order.create({
                     purchase_units: [{
                         amount: {
-                            value: 1000000
+                            // meter en el valor el precio total de todo lo que vaya a comprar en el carrito
+                            value: <?php echo $total; ?> 
                         }
                     }]
                 });
             },
 
             onApprove: function(datos, actions){
+                let URL = 'capturaCompra.php';
                 actions.order.capture().then(function (detalles){
 
-                    
+                    console.log(detalles);
+
+                    let url = 'capturaCompra.php';
+
+                    return fetch(url, {
+                        method: 'post',
+                        headers: {
+                            'content-type': 'application/json'
+                        },
+                        body: JSON.stringify({
+                            detalles: detalles
+                        })
+                    })
                 });
             },
 
@@ -67,5 +89,6 @@
             }
         }).render('#paypal-button-container');
     </script>
+
 </body>
 </html>

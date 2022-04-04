@@ -1,0 +1,22 @@
+@import url('https://fonts.googleapis.com/css?family=Poppins&display=swap');
+
+.boton-contenedor{
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+article{
+
+    padding: 20px 40px;
+    background-color: rgb(184, 255, 231);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}
+
+a{
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+    color: rgb(0, 0, 0);
+}
