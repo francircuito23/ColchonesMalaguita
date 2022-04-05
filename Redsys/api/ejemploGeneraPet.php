@@ -31,6 +31,7 @@
 	//Datos de configuración
 	$version="HMAC_SHA256_V1";
 	$kc = 'sq7HjrUOBfKmC576ILgskD5srU870gJ7';//Clave recuperada de CANALES
+	
 	// Se generan los parámetros de la petición
 	$request = "";
 	$params = $miObj->createMerchantParameters();
@@ -56,3 +57,5 @@
 
 </body>
 </html>
+
+

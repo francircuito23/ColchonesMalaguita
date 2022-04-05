@@ -12,10 +12,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../../paypal/paypal.css">
     <title>Pago</title>
+    <script src="https://js.monei.com/v1/monei.js"></script>
 </head>
 <body>
     
     <script src="https://www.paypal.com/sdk/js?client-id=<?php echo CLIENT_ID; ?>&currency=<?php echo CURRENCY; ?>"></script>
+    
 
     <div id="paypal-button-container"></div>
 
@@ -88,7 +90,76 @@
 
             }
         }).render('#paypal-button-container');
+
+    </script>
+
+
+
+
+
+
+
+    
+    <?php
+
+        require_once('../../../vendor/autoload.php');
+
+        $monei = new Monei\MoneiClient('pk_test_2c322110-b178-4fdc-8b1b-d6a375eac42b');
+        $monei->payments->create([
+        'amount' => 110,
+        'currency' => 'EUR',
+        'orderId' => '14379133960355',
+        'description' => 'Test Shop - #14379133960355',
+        'customer' => [
+            'email' => 'john.doe@microapps.com'
+        ],
+        'callbackUrl' => 'https://example.com/checkout/callback'
+        ]);
+
+    ?>
+    
+    <form action="https://secure.monei.com/payments/af6029f80f5fc73a8ad2753eea0b1be0/confirm" method="post"id="payment-form">
+        <div id="bizum_container">
+            <script>
+                var bizum = monei.Bizum({
+                    paymentId: 'af6029f80f5fc73a8ad2753eea0b1be0',
+                    amount: 0.1,
+                    onSubmit(result) {
+                        if (result.error) {
+                        // Inform the user if there was an error.
+                        } else {
+                        // Confirm payment using the token.
+                            moneiTokenHandler(result.token);
+                        }
+                    },
+                    onError(error) {
+                        console.log(error);
+                    },
+                
+                });
+
+                // render Component on the page
+                bizum.render('#bizum');
+            </script>
+        </div>
+    </form>
+
+    <script>
+        // Confirm the payment
+        function moneiTokenHandler(token) {
+            var paymentForm = document.getElementById('payment-form');
+            // Insert the token ID into the form so it gets submitted to the server
+            var hiddenInput = document.createElement('input');
+            hiddenInput.setAttribute('type', 'hidden');
+            hiddenInput.setAttribute('name', 'paymentToken');
+            hiddenInput.setAttribute('value', token);
+            paymentForm.appendChild(hiddenInput);
+
+            // Submit the form
+            paymentForm.submit();
+        }
     </script>
 
 </body>
 </html>
+
