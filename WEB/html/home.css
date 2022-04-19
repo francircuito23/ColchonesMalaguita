@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro:wght@200&display=swap');
+
+html{
+    height: 100%;
+}
+body{
+    background: rgb(247,228,203);
+    background: -moz-linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
+    background: linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7e4cb",endColorstr="#fffcf8",GradientType=1);
+}
+.header {
+    padding-left: 20px;
+    margin-top: -1.5%;
+}
+.header header {
+    display: flex;
+    align-items: center;
+    gap: 8%;
+}
+.header__titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75em;
+    cursor: pointer;
+    transition: 0.2s;
+}
+.header__titulo:hover {
+    transform: scale(0.96);
+    text-shadow: 3px 3px 3px rgba(172, 172, 141, 0.616);
+}
+.header__nav {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    list-style: none;
+}
+.header__nav li {
+    display: inline-block;
+    margin: 40px;
+}
+.header__nav li a {
+    text-decoration: none;
+    color: black;
+}
+.header__icons__redes ul li{
+    margin: 10px;
+}
+
+ion-icon {
+    font-size: 1.1em;
+}

@@ -55,6 +55,8 @@
                         body: JSON.stringify({
                             detalles: detalles
                         })
+                    }).then(function(response){
+                        //información de pago confirmado
                     })
                 });
             },
@@ -104,25 +106,25 @@
 
         require_once('../../../vendor/autoload.php');
 
-        $monei = new Monei\MoneiClient('pk_test_2c322110-b178-4fdc-8b1b-d6a375eac42b');
+        $monei = new Monei\MoneiClient('pk_test_dadf79fff60c992455e0ec14710ffc47');
         $monei->payments->create([
-        'amount' => 110,
-        'currency' => 'EUR',
-        'orderId' => '14379133960355',
-        'description' => 'Test Shop - #14379133960355',
-        'customer' => [
-            'email' => 'john.doe@microapps.com'
-        ],
-        'callbackUrl' => 'https://example.com/checkout/callback'
+            'amount' => 110, // 1.10 EUR
+            'orderId' => '14379133960355',
+            'currency' => 'EUR',
+            'paymentToken' => '7cc38b08ff471ccd313ad62b23b9f362b107560b',
+            'callbackUrl' => 'https://example.com/checkout/callback',
+            'completeUrl' => 'https://example.com/checkout/complete'
         ]);
+
+        print_r($monei);
 
     ?>
     
-    <form action="https://secure.monei.com/payments/af6029f80f5fc73a8ad2753eea0b1be0/confirm" method="post"id="payment-form">
+    <form action="https://secure.monei.com/payments/358d8e15-3ff8-4445-a306-fab/confirm" method="post"id="payment-form">
         <div id="bizum_container">
             <script>
                 var bizum = monei.Bizum({
-                    paymentId: 'af6029f80f5fc73a8ad2753eea0b1be0',
+                    paymentId: '358d8e15-3ff8-4445-a306-fab',
                     amount: 0.1,
                     onSubmit(result) {
                         if (result.error) {
@@ -139,7 +141,7 @@
                 });
 
                 // render Component on the page
-                bizum.render('#bizum');
+                bizum.render('#bizum_container');
             </script>
         </div>
     </form>
