@@ -11,14 +11,17 @@
     <link rel="stylesheet" href="home.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <title>Hypnos Bed</title>
+    <script src="../js/home.js"></script>
+    <title>Hipnos Bed</title>
 </head>
 <body>
+
+  <main>
 
     <section class="header">
       <header>
         <div class='header__titulo'>
-          <h1>Hypnos Bed</h1>
+          <h1>Hipnos Bed</h1>
         </div>
         <nav>
           <ul class="header__nav">
@@ -44,6 +47,17 @@
         </div>
       </header>
     </section>
+
+    <section class="carrusel">
+      <article class="carrusel__imgs">
+        <!-- cambiar href con js por cada imagen -->
+        <a href="">
+          <img class="carrusel__img-1" src="../img/matelas-hastens-800x312.png" alt="colchon-1">
+        </a>
+      </article>
+    </section>
+
+  </main>
 
 </body>
 </html>

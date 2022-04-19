@@ -13,6 +13,10 @@ body{
 .header {
     padding-left: 20px;
     margin-top: -1.5%;
+    z-index: 9999;
+}
+header{
+    z-index: 9999;
 }
 .header header {
     display: flex;
@@ -24,6 +28,7 @@ body{
     font-size: 1.75em;
     cursor: pointer;
     transition: 0.2s;
+    z-index: 1;
 }
 .header__titulo:hover {
     transform: scale(0.96);
@@ -33,19 +38,56 @@ body{
     font-family: 'Playfair Display', serif;
     display: flex;
     list-style: none;
+    z-index: 9999;
 }
 .header__nav li {
     display: inline-block;
     margin: 40px;
+    z-index: 9999;
 }
 .header__nav li a {
     text-decoration: none;
     color: black;
+    z-index: 9999;
 }
 .header__icons__redes ul li{
     margin: 10px;
+    z-index: 9999;
 }
 
 ion-icon {
     font-size: 1.1em;
 }
+
+.carrusel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 10vh;
+    height: 65vh;
+}
+.carrusel__imgs{
+    position: absolute;
+    width: 1903px; height: 845px;
+}
+.carrusel__img-1{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+/* .carrusel__img-2{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+.carrusel__img-3{
+    position: absolute;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+} */
