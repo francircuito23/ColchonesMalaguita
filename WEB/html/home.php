@@ -50,11 +50,91 @@
 
     <section class="carrusel">
       <article class="carrusel__imgs">
-        <!-- cambiar href con js por cada imagen -->
         <a href="">
           <img class="carrusel__img-1" src="../img/matelas-hastens-800x312.png" alt="colchon-1">
         </a>
+        <!-- <a href="">
+          <img class="carrusel__img-1" src="../img/colchon1.jpg" alt="colchon-2">
+        </a>
+        <a href="">
+          <img class="carrusel__img-1" src="../img/colchon2.jpg" alt="colchon-3">
+        </a>
+        <a href="">
+          <img class="carrusel__img-1" src="../img/colchon3.webp" alt="colchon-4">
+        </a> -->
       </article>
+    </section>
+
+    <section class="productos">
+      <div class="productos__titulo">
+        <h1>PRODUCTOS HIPNOS</h1>
+      </div>
+      <div class="productos__botones">
+        <!-- <input type="button" value="Colchones Hipnos"> -->
+        <a href="">Colchones Hipnos</a>
+        <!-- <input type="button" value="Almohadas Hipnos"> -->
+        <a href="">Almohadas Hipnos</a>
+      </div>
+
+      <div class="productos__header">
+        <div class="productos__header-producto">
+          <span class="productos__header-producto-titulo">
+            Colchones
+            <span class="productos__header-producto-titulo-cantidad">
+              <!-- cantidad de los productos actuales -->
+            </span>
+          </span>
+        </div>
+        <div class="productos__header-producto">
+          <span class="productos__header-producto-titulo">
+            Almohadas
+            <span class="productos__header-producto-titulo-cantidad">
+              <!-- cantidad de los productos actuales -->
+            </span>
+          </span>
+        </div>
+        <div class="productos__header-producto">
+          <span class="productos__header-producto-titulo">
+            Somier
+            <span class="productos__header-producto-titulo-cantidad">
+              <!-- cantidad de los productos actuales -->
+            </span>
+          </span>
+        </div>
+        <div class="productos__header-producto">
+          <span class="productos__header-producto-titulo">
+            Accesorios
+            <span class="productos__header-producto-titulo-cantidad">
+              <!-- cantidad de los productos actuales -->
+            </span>
+          </span>
+        </div>
+      </div>
+      
+      <div class="productos__reales">
+        <div class="productos__reales-colchones">
+          <div class="productos__reales-colchones-imagen">
+            <a href="">
+              <div class="imagen_colchon">
+                <img src="" alt="">
+              </div>
+            </a>
+          </div>
+        </div>
+        <div class="productos__reales-colchones-titulo">
+          <h1>Colchonsito 1</h1>
+        </div>
+        <div class="productos__reales-colchones">
+
+        </div>
+        <div class="productos__reales-colchones">
+
+        </div>
+        <div class="productos__reales-colchones">
+
+        </div>
+      </div>
+
     </section>
 
   </main>

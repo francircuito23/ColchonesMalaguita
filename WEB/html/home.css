@@ -1,22 +1,30 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro:wght@200&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
 html{
-    height: 100%;
+    /* height: 100%; */
 }
 body{
     background: rgb(247,228,203);
     background: -moz-linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
     background: -webkit-linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
     background: linear-gradient(180deg, rgba(247,228,203,1) 0%, rgba(255,252,248,1) 100%);
+    background-repeat: no-repeat;
     filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7e4cb",endColorstr="#fffcf8",GradientType=1);
+    margin: 0;
 }
 .header {
-    padding-left: 20px;
-    margin-top: -1.5%;
+    margin-top: -0.25%;
     z-index: 9999;
+    width: 100%;
+    backdrop-filter: blur(100px);
+    position: fixed;
 }
 header{
     z-index: 9999;
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.164);
+    
 }
 .header header {
     display: flex;
@@ -29,6 +37,7 @@ header{
     cursor: pointer;
     transition: 0.2s;
     z-index: 1;
+    padding-left: 20px;
 }
 .header__titulo:hover {
     transform: scale(0.96);
@@ -50,9 +59,25 @@ header{
     color: black;
     z-index: 9999;
 }
+
+.header__nav li a:hover{
+    color: brown;
+}
 .header__icons__redes ul li{
     margin: 10px;
     z-index: 9999;
+}
+
+.header__icons__redes ul li a:first-child:hover{
+    color: rgb(42, 165, 73);
+}
+
+li a:hover > ion-icon[name="logo-instagram"]{
+    color: rgba(204, 0, 255, 0.397);
+}
+
+li a:hover > ion-icon[name="logo-facebook"]{
+    color: rgba(0, 26, 255, 0.808);
 }
 
 ion-icon {
@@ -64,12 +89,14 @@ ion-icon {
     justify-content: center;
     align-items: center;
     position: relative;
-    top: 10vh;
+    top: 5vh;
     height: 65vh;
 }
 .carrusel__imgs{
     position: absolute;
-    width: 1903px; height: 845px;
+    width: 1903px; height: 500px;
+    transition: 2s linear;
+    opacity: 1;
 }
 .carrusel__img-1{
     height: 100%;
@@ -77,6 +104,88 @@ ion-icon {
     object-fit: contain;
 }
 
+.fadeCarruselHidden{
+    position: absolute;
+    width: 1903px; height: 800px;
+    opacity: 0;
+    transition: 2s;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 10vh;
+}
+
+.productos__titulo{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 3em;
+    letter-spacing: 0.75em;
+}
+
+.productos__botones{
+    width: 40vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.productos__botones > *{
+    width: 300px; height: 40px;
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.productos__botones > *:hover{
+    border: 2px solid;
+    border-color: rgba(255, 200, 178, 0.616);
+}
+
+.productos__header{
+    margin-top: 10em;
+    width: 90vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.178);
+    padding-bottom: 1em;
+    /* margin-bottom: 1000px; */
+}
+
+.productos__header-producto:hover{
+    cursor: pointer;
+    color: brown;
+}
+
+.productos__reales{
+    width: 100vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em;
+}
+
+.productos__reales-colchones{
+    width: 15em;
+    height: 20em;
+    background-color: rgb(83, 170, 247);
+}
+.productos__reales-colchones-titulo{
+    flex-direction: column;
+    
+}
 /* .carrusel__img-2{
     position: absolute;
     left: 0;
