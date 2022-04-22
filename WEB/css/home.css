@@ -1,0 +1,359 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+html{
+    /* height: 100%; */
+}
+:root {
+    --gray: #34495e;
+    --darkgray: #2c3e50;
+}
+body{
+    background: rgb(117, 80, 32);
+    background: -moz-linear-gradient(180deg, rgb(117, 80, 32) 0%, rgb(255, 162, 41) 100%);
+    background: -webkit-linear-gradient(180deg, rgba(117, 80, 32) 0%, rgba(255, 162, 41) 100%);
+    background: linear-gradient(180deg, rgba(117, 80, 32) 0%, rgba(255, 162, 41) 100%);
+    background-repeat: no-repeat;
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr="#f7e4cb",endColorstr="#fffcf8",GradientType=1);
+    margin: 0;
+    overflow-x: hidden;
+    background-attachment: fixed;
+}
+.header {
+    margin-top: -0.25%;
+    z-index: 9999;
+    width: 100%;
+    backdrop-filter: blur(100px);
+    position: fixed;
+}
+header{
+    z-index: 9999;
+    width: 100%;
+    height: 100px;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.164);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+}
+.header header {
+    display: flex;
+    align-items: center;
+    gap: 8%;
+}
+.header__titulo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.75em;
+    cursor: pointer;
+    transition: 0.2s;
+    z-index: 1;
+    padding-left: 20px;
+    color: rgba(255, 255, 255, 0.801);
+}
+.header__titulo:hover {
+    transform: scale(0.96);
+    text-shadow: 3px 3px 3px rgba(172, 172, 141, 0.616);
+}
+.header__nav {
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    list-style: none;
+    z-index: 9999;
+}
+.header__nav__icons{
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    list-style: none;
+    z-index: 9999;
+}
+.header__icons ul li{
+    margin: 40px;
+}
+.header__icons ul li a:hover{
+    color: brown;
+}
+.header__nav__redes{
+    font-family: 'Playfair Display', serif;
+    display: flex;
+    list-style: none;
+    z-index: 9999;
+}
+.header__nav li {
+    display: inline-block;
+    margin: 40px;
+    z-index: 9999;
+}
+.header__nav li a, .header__nav__icons li a, .header__nav__redes li a  {
+    text-decoration: none;
+    color: rgba(255, 255, 255, 0.801);
+    z-index: 9999;
+}
+
+.header__nav li a:hover{
+    color: brown;
+}
+.header__icons__redes ul li{
+    margin: 10px;
+    z-index: 9999;
+}
+
+.header__icons__redes ul li a:first-child:hover{
+    color: rgb(42, 165, 73);
+}
+
+li a:hover > ion-icon[name="logo-instagram"]{
+    color: rgba(204, 0, 255, 0.397);
+}
+
+li a:hover > ion-icon[name="logo-facebook"]{
+    color: rgba(0, 26, 255, 0.808);
+}
+
+ion-icon {
+    font-size: 1.1em;
+}
+
+.carrusel{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    top: 5vh;
+    height: 65vh;
+}
+.carrusel__imgs{
+    position: absolute;
+    width: 1903px; height: 500px;
+    transition: 2s linear;
+    opacity: 1;
+}
+.carrusel__img-1{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.fadeCarruselHidden{
+    position: absolute;
+    width: 1903px; height: 800px;
+    opacity: 0;
+    transition: 2s;
+}
+
+.productos{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    top: 10vh;
+}
+
+.productos__titulo{
+    font-family: 'Nanum Myeongjo', serif;
+    font-size: 3em;
+    letter-spacing: 0.75em;
+}
+
+.productos__botones{
+    width: 40vw;
+    display: flex;
+    justify-content: space-between;
+}
+
+.productos__botones > *{
+    width: 300px; height: 40px;
+    background-color: black;
+    color: aliceblue;
+    font-family: 'Playfair Display', serif;
+    cursor: pointer;
+    text-decoration: none;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: none;
+}
+
+.productos__botones > *:hover{
+    border: 2px solid;
+    border-color: rgba(255, 200, 178, 0.616);
+}
+
+.productos__header{
+    margin-top: 10em;
+    width: 90vw;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    flex-direction: row;
+    font-family: 'Playfair Display', serif;
+    border-bottom: 2px solid rgba(0, 0, 0, 0.178);
+    padding-bottom: 1em;
+}
+
+.productos__header-producto:hover{
+    cursor: pointer;
+    color: brown;
+}
+
+.productos__reales{
+    width: 99vw;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    margin: 2em;
+}
+
+.productos__reales-colchones{
+    width: 15em;
+    height: auto;
+    padding: 10px;
+    background-color: rgb(83, 170, 247);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.productos__reales-colchones-titulo,
+.productos__reales-colchones-titulo-2,
+.productos__reales-colchones-titulo-3,
+.productos__reales-colchones-titulo-4{
+
+    font-family: 'Nanum Myeongjo', serif;
+    cursor: pointer;
+}
+
+.productos__reales-colchones-titulo{
+    position: absolute;
+    bottom: -6vh;
+    left: 6%;
+}
+
+.productos__reales-colchones-titulo-2{
+    position: absolute;
+    bottom: -6vh;
+    left: 31%;
+}
+
+.productos__reales-colchones-titulo-3{
+    position: absolute;
+    bottom: -6vh;
+    left: 56%;
+}
+
+.productos__reales-colchones-titulo-4{
+    position: absolute;
+    bottom: -6vh;
+    left: 81%;
+}
+
+
+.imagen__colchon{
+    height: 200px;
+    width: 200px;
+}
+
+.imagen__colchon img{
+    height: 100%;
+    width: 100%;
+    object-fit: contain;
+}
+
+.productos__reales-colchones-descripcion{
+    font-family: 'Playfair Display', serif;
+}
+
+.productos__reales-colchones-medidas label{
+    font-family: 'Playfair Display', serif;
+}
+
+.productos__reales-colchones-medidas select{
+    font-family: 'Nanum Myeongjo', serif;
+    margin: 10px;
+    text-align: center;
+    color: #fff;
+    background-color: var(--darkgray);
+    background-image: none;
+    cursor: pointer;
+}
+
+.productos__reales-colchones-medidas select:hover {
+    background-color: rgba(0, 0, 0, 0.747);
+}
+
+.productos__reales-colchones-precio{
+    font-size: 1.5em;
+    margin-top: 1em;
+}
+
+@media (min-width: 100px) and (max-width: 500px) {
+    .header {
+        margin-top: -0.25%;
+        z-index: 9999;
+        width: 100%;
+        backdrop-filter: blur(100px);
+        position: fixed;
+    }
+    header{
+        z-index: 9999;
+        width: 100%;
+        height: auto;
+        border-bottom: 2px solid rgba(0, 0, 0, 0.164);
+        
+    }
+    .header header {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 8%;
+    }
+    .header__titulo {
+        font-family: 'Playfair Display', serif;
+        font-size: 4em;
+        cursor: pointer;
+        transition: 0.2s;
+        z-index: 1;
+        padding-left: 20px;
+        color: rgba(255, 255, 255, 0.801);
+    }
+    
+    .header__nav {
+        font-family: 'Playfair Display', serif;
+        display: flex;
+        list-style: none;
+        z-index: 9999;
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .header__nav li {
+        display: inline-block;
+        margin: 40px;
+        z-index: 9999;
+    }
+    .header__nav li a {
+        font-size: 4em;
+        text-decoration: none;
+        color: rgba(255, 255, 255, 0.801);
+        z-index: 9999;
+    }
+    .header__icons__redes ul li{
+        margin: 10px;
+        z-index: 9999;
+    }
+    .header__nav__icons, .header__nav__redes{
+        font-size: 2em;
+    }
+}
+
+@media screen and (max-width: 768px){
+    .header__titulo {
+        font-family: 'Playfair Display', serif;
+        font-size: 1em;
+        cursor: pointer;
+        z-index: 1;
+        padding-left: 20px;
+        color: rgba(255, 255, 255, 0.801);
+    }
+}

@@ -71,3 +71,4 @@ function fadeCarrusel(){
         }
     },1000);
 }
+
