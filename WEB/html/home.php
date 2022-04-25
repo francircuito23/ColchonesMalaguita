@@ -1,5 +1,5 @@
 <?php
-
+  require '../php/conexion.php';
 ?>
 
 <!DOCTYPE html>
@@ -51,7 +51,29 @@
     <section class="carrusel">
       <article class="carrusel__imgs">
         <a href="">
-          <img class="carrusel__img-1" src="../img/matelas-hastens-800x312.png" alt="colchon-1">
+
+        <?php 
+            //Escaneo el directorrio de las imagenes
+            $imgs=array_slice(scandir("../img/"), 2);
+
+            //Imprimo 
+            //Img que se muestra
+            // echo("<img src="./img/fadeCarrusel/".$imgs[0]."" alt="bannersCarrusel">");
+            echo '<img src="../img/'.$imgs[0].'"/ alt="colchon-1" class=".carrusel__img-1">';
+
+            for ($i=0; $i < count($imgs) ; $i++) { 
+              //Imgs por las que alterna el js
+              // echo("<img src="./img/fadeCarrusel/".$imgs[$i]."" alt="bannersCarrusel" class="fadeCarruselHiddenImages">"); 
+              echo '<img src="../img/'.$imgs[$i].'"/ alt="colchon-X" class="fadeCarruselHiddenImages">';
+
+            }
+        ?> 
+        <!-- <img class=".carrusel__img-1" src="../img/matelas-hastens-800x312.png" alt="colchon-1">
+        <img class="fadeCarruselHiddenImages" src="../img/colchon1.jpg" alt="colchon-1">
+        <img class="fadeCarruselHiddenImages" src="../img/colchon2.jpg" alt="colchon-3">
+        <img class="fadeCarruselHiddenImages" src="../img/colchon3.webp" alt="colchon-4">
+        <img class="fadeCarruselHiddenImages" src="../img/matelas-hastens-800x312.png" alt="colchon-1"> -->
+        
         </a>
         <!-- <a href="">
           <img class="carrusel__img-1" src="../img/colchon1.jpg" alt="colchon-2">
@@ -110,135 +132,72 @@
           </span>
         </div>
       </div>
-      
+
+      <?php
+
+        $queryProductos = mysqli_query($conn, "SELECT * FROM products where estado = 1");
+
+        $queryAttrProductos = mysqli_query($conn, "SELECT DISTINCT a.id_producto, a.precio, a.altura, a.ancho, a.descripcion from atributos_productos a inner join products p where p.estado = 1;");
+
+      ?>
+
       <div class="productos__reales">
+        <?php
+          $resultado = mysqli_num_rows($queryProductos);
+            
+            if($resultado > 0){
+              while($datos = mysqli_fetch_array($queryProductos)){
+        ?>
         <div class="productos__reales-colchones">
           <div class="productos__reales-colchones-imagen">
             <a href="">
               <div class="imagen__colchon">
+                <?php
+
+                  // $idProducto = $datos['id_producto'];
+                  
+
+                  if($datos['img'] == null){
+
+                    $datos['img'] = "default-placeholder.png";
+
+                  }
+
+                
+                ?>
                 <!-- codigo php -->
-                <img src="https://static.carrefour.es/hd_510x_/imagenes/products/84354/41895/489/8435441895489/imagenGrande1.jpg" alt="">
+                <img src="<?php echo '../img/'.$datos['img']; ?>" alt="">
               </div>
             </a>
           </div>
           <div class="productos__reales-colchones-descripcion">
             <!-- codigo php -->
-            <p>Hola buenas soy la descripción</p>
+            <p><?php echo $datos['descripcion']; ?></p>
           </div>
           <div class="productos__reales-colchones-medidas">
             <label for="">Elegir medida:</label>
             <select>
               <!-- codigo php -->
-              <option value="1">80x200</option>
-              <option value="2">90x180</option>
-              <option value="3">120x180</option>
+              <option value="1"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
+              <option value="2"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
+              <option value="3"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
             </select>
           </div>
           <div class="productos__reales-colchones-precio">
             <!-- codigo php -->
-            <span>600€</span>
+            <span><?php echo $datos['precio']; ?></span>
           </div>
           <div class="productos__reales-colchones-titulo">
             <!-- codigo php -->
-            <h1>Colchonsito 1</h1> 
+            <h1><?php echo $datos['nombre']; ?></h1> 
           </div>
-        </div>
-        
-        <div class="productos__reales-colchones">
-          <div class="productos__reales-colchones-imagen">
-              <a href="">
-                <div class="imagen__colchon">
-                  <!-- codigo php -->
-                  <img src="https://static.carrefour.es/hd_510x_/imagenes/products/84354/41895/489/8435441895489/imagenGrande1.jpg" alt="">
-                </div>
-              </a>
-            </div>
-            <div class="productos__reales-colchones-descripcion">
-              <!-- codigo php -->
-              <p>Hola buenas soy la descripción</p>
-            </div>
-            <div class="productos__reales-colchones-medidas">
-              <label for="">Elegir medida:</label>
-              <select>
-                <!-- codigo php -->
-                <option value="1">80x200</option>
-                <option value="2">90x180</option>
-                <option value="3">120x180</option>
-              </select>
-            </div>
-            <div class="productos__reales-colchones-precio">
-              <!-- codigo php -->
-              <span>600€</span>
-            </div>
-            <div class="productos__reales-colchones-titulo-2">
-              <!-- codigo php -->
-              <h1>Colchonsito 2</h1> 
-            </div>
-        </div>
+        </div>        
+        <?php
+      
+          }
+            } 
 
-        <div class="productos__reales-colchones">
-        <div class="productos__reales-colchones-imagen">
-            <a href="">
-              <div class="imagen__colchon">
-                <!-- codigo php -->
-                <img src="https://static.carrefour.es/hd_510x_/imagenes/products/84354/41895/489/8435441895489/imagenGrande1.jpg" alt="">
-              </div>
-            </a>
-          </div>
-          <div class="productos__reales-colchones-descripcion">
-            <!-- codigo php -->
-            <p>Hola buenas soy la descripción</p>
-          </div>
-          <div class="productos__reales-colchones-medidas">
-            <label for="">Elegir medida:</label>
-            <select>
-              <!-- codigo php -->
-              <option value="1">80x200</option>
-              <option value="2">90x180</option>
-              <option value="3">120x180</option>
-            </select>
-          </div>
-          <div class="productos__reales-colchones-precio">
-            <!-- codigo php -->
-            <span>600€</span>
-          </div>
-          <div class="productos__reales-colchones-titulo-3">
-            <!-- codigo php -->
-            <h1>Colchonsito 3</h1> 
-          </div>
-        </div>
-
-        <div class="productos__reales-colchones">
-        <div class="productos__reales-colchones-imagen">
-            <a href="">
-              <div class="imagen__colchon">
-                <!-- codigo php -->
-                <img src="https://static.carrefour.es/hd_510x_/imagenes/products/84354/41895/489/8435441895489/imagenGrande1.jpg" alt="">
-              </div>
-            </a>
-          </div>
-          <div class="productos__reales-colchones-descripcion">
-            <!-- codigo php -->
-            <p>Hola buenas soy la descripción</p>
-          </div>
-          <div class="productos__reales-colchones-medidas">
-            <label for="">Elegir medida:</label>
-            <select>
-              <!-- codigo php -->
-              <option value="1">80x200</option>
-              <option value="2">90x180</option>
-              <option value="3">120x180</option>
-            </select>
-          </div>
-          <div class="productos__reales-colchones-precio">
-            <!-- codigo php -->
-            <span>600€</span>
-          </div>
-          <div class="productos__reales-colchones-titulo-4">
-            <!-- codigo php -->
-            <h1>Colchonsito 4</h1> 
-          </div>
-        </div>
+        ?>
       </div>
 
     </section>
