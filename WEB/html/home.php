@@ -64,7 +64,7 @@
             for ($i=0; $i < count($imgs) ; $i++) { 
               //Imgs por las que alterna el js
               // echo("<img src="./img/fadeCarrusel/".$imgs[$i]."" alt="bannersCarrusel" class="fadeCarruselHiddenImages">"); 
-              echo '<img src="../img/'.$imgs[$i].'"/ alt="colchon-X" class="fadeCarruselHiddenImages">';
+              echo '<img src="../img/'.$imgs[$i].'"/ alt="colchon-'.$i.'" class="fadeCarruselHiddenImages">';
 
             }
         ?> 
@@ -137,16 +137,19 @@
 
         $queryProductos = mysqli_query($conn, "SELECT * FROM products where estado = 1");
 
-        $queryAttrProductos = mysqli_query($conn, "SELECT DISTINCT a.id_producto, a.precio, a.altura, a.ancho, a.descripcion from atributos_productos a inner join products p where p.estado = 1;");
+        $queryAttrProductos = mysqli_query($conn, "SELECT DISTINCT p.*, a.id_producto, a.precio, a.altura, a.ancho, a.descripcion from atributos_productos a inner join products p on a.id_producto = p.id_producto where p.estado = 1");
+
+        $datosAtrr = mysqli_fetch_array($queryAttrProductos);
 
       ?>
 
       <div class="productos__reales">
         <?php
           $resultado = mysqli_num_rows($queryProductos);
-            
+          
             if($resultado > 0){
               while($datos = mysqli_fetch_array($queryProductos)){
+                
         ?>
         <div class="productos__reales-colchones">
           <div class="productos__reales-colchones-imagen">
@@ -172,26 +175,27 @@
           </div>
           <div class="productos__reales-colchones-descripcion">
             <!-- codigo php -->
-            <p><?php echo $datos['descripcion']; ?></p>
-          </div>
-          <div class="productos__reales-colchones-medidas">
-            <label for="">Elegir medida:</label>
-            <select>
-              <!-- codigo php -->
-              <option value="1"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
-              <option value="2"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
-              <option value="3"><?php echo $datos['altura']; ?>x<?php echo $datos['ancho']; ?></option>
-            </select>
+            <p><?php 
+              while($datosAtrr = mysqli_fetch_array($queryAttrProductos)){
+                if ($datosAtrr['id_producto'] == 1) {
+                  echo $datosAtrr['descripcion']; 
+                  break;
+                } else if(($datosAtrr['id_producto'] == 2)) {
+                  echo $datosAtrr['descripcion'];
+                  break;
+                }
+              }?>
+            </p>
           </div>
           <div class="productos__reales-colchones-precio">
             <!-- codigo php -->
-            <span><?php echo $datos['precio']; ?></span>
+            <span><?php echo $datosAtrr['precio']; ?></span>
           </div>
           <div class="productos__reales-colchones-titulo">
             <!-- codigo php -->
             <h1><?php echo $datos['nombre']; ?></h1> 
           </div>
-        </div>        
+        </div>          
         <?php
       
           }
