@@ -42,8 +42,6 @@ window.onload = function () {
 
     //FADE CARRUSEL START
 
-
-
     let fade = document.querySelector(".carrusel__imgs");
     let fadeCarruselImages= fade.getElementsByTagName("img");
     for (let i = 0; i < fadeCarruselImages.length; i++) {
@@ -60,6 +58,30 @@ window.onload = function () {
     setInterval(function(){
         fadeCarrusel();
     },7500);
+
+    //Cambio de categorias
+
+    var categorias = document.querySelectorAll(".productos__reales");
+
+    var botones = document.querySelectorAll(".productos__header-producto-titulo");
+    
+
+    botones[0].addEventListener('click',  function(){
+
+        categorias[0].style = "";
+        categorias[1].style.display = "none";
+    
+        
+    });
+
+    botones[1].addEventListener('click',  function(){
+
+        console.log(categorias[0]);
+
+        categorias[1].style = "";
+        categorias[0].style.display = "none";
+            
+    });
 
 }
 
@@ -83,31 +105,5 @@ function fadeCarrusel(){
             }
         },750); 
 }
-
-
-//FADE CARRUSEL, Banners al inicio de la pÃ¡gina
-
-// let fadeCarruselImg = ["matelas-hastens-800x312.png","colchon1.jpg","colchon2.jpg","colchon3.webp"];
-
-// let i = 1;
-
-
-// function fadeCarrusel(){
-//     let fadeCarrusel = document.querySelector(".carrusel__imgs");
-//     let img = fadeCarrusel.getElementsByTagName("img")[0];
-//     //Escondo la imagen
-//     fadeCarrusel.className="fadeCarruselHidden";
-    
-//     setTimeout(function(){
-//         //Cambio la imagen cuando esta escondida y cambio el id de vuelta para mostrar la img
-//         img.src= "../img/"+fadeCarruselImg[i];
-//         fadeCarrusel.className="carrusel__imgs";
-//         i++;
-//         //para que se pare (reinicie) una vez que recorra el array
-//         if(i==fadeCarruselImg.length){
-//             i=0;
-//         }
-//     },1000);
-// }
 
 

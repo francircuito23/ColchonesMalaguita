@@ -1,5 +1,6 @@
 <?php
   require '../php/conexion.php';
+  require '../../loginUsus/database.php'
 ?>
 
 <!DOCTYPE html>
@@ -11,6 +12,15 @@
     <link rel="stylesheet" href="../css/home.css">
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/css//bootstrap.min.css"></script>
+    <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
+    <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
+    <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
+    <link href="../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
+    <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/home.js"></script>
     <title>Hipnos Bed</title>
 </head>
@@ -135,7 +145,7 @@
 
       <?php
 
-        $queryProductos = mysqli_query($conn, "SELECT * FROM products where estado = 1");
+        $queryProductos = mysqli_query($conn, "SELECT nombre, categoria, img, estado FROM `products` WHERE categoria = 'colchones' AND estado = 1");
 
         $queryAttrProductos = mysqli_query($conn, "SELECT DISTINCT p.*, a.id_producto, a.precio, a.altura, a.ancho, a.descripcion from atributos_productos a inner join products p on a.id_producto = p.id_producto where p.estado = 1");
 
@@ -175,21 +185,42 @@
           </div>
           <div class="productos__reales-colchones-descripcion">
             <!-- codigo php -->
-            <p><?php 
-              while($datosAtrr = mysqli_fetch_array($queryAttrProductos)){
-                if ($datosAtrr['id_producto'] == 1) {
-                  echo $datosAtrr['descripcion']; 
-                  break;
-                } else if(($datosAtrr['id_producto'] == 2)) {
-                  echo $datosAtrr['descripcion'];
-                  break;
-                }
-              }?>
+            <p>
+            <?php
+              
+          
+            ?>
             </p>
           </div>
           <div class="productos__reales-colchones-precio">
             <!-- codigo php -->
-            <span><?php echo $datosAtrr['precio']; ?></span>
+            <span>
+            <?php
+              $queryPrecios = mysqli_query($conn, "SELECT id_producto, precio FROM atributos_productos");
+              
+              while($datosPrecios = mysqli_fetch_array($queryPrecios)){
+                
+                $datosPrecios = mysqli_fetch_all($queryPrecios, MYSQLI_ASSOC);
+
+                // print_r($datosPrecios);
+
+                $valuesInsert="-";
+
+                for ($i=0; $i < 4 ; $i++) {
+
+                  if(($datosPrecios[$i]['precio'] == 172.99) || ($datosPrecios[$i]['precio'] == 199.99)){
+                    echo $valuesInsert;
+                    $valuesInsert = substr_replace($valuesInsert, "", -1);
+                  }
+                  else{
+                    echo $datosPrecios[$i]['precio']; 
+                  }
+                  
+                }
+              
+              }      
+            ?>
+            </span>
           </div>
           <div class="productos__reales-colchones-titulo">
             <!-- codigo php -->
@@ -204,7 +235,97 @@
         ?>
       </div>
 
+      <?php
+
+        $queryAlmohadas = mysqli_query($conn, "SELECT nombre, categoria, img, estado FROM `products` WHERE categoria = 'almohadas' AND estado = 1");
+
+      ?>
+
+      <div style="display: none;" class="productos__reales">
+        <?php
+          $resultado = mysqli_num_rows($queryAlmohadas);
+          
+            if($resultado > 0){
+              while($datosAlmohadas = mysqli_fetch_array($queryAlmohadas)){
+                
+        ?>
+        <div class="productos__reales-almohadas">
+          <div class="productos__reales-almohadas-imagen">
+            <a href="">
+              <div class="imagen__almohada">
+                <?php
+
+                  // $idProducto = $datos['id_producto'];
+                  
+
+                  if($datosAlmohadas['img'] == null){
+
+                    $datosAlmohadas['img'] = "default-placeholder.png";
+
+                  }
+
+                
+                ?>
+                <!-- codigo php -->
+                <img src="<?php echo '../img/'.$datosAlmohadas['img']; ?>" alt="">
+              </div>
+            </a>
+          </div>
+          <div class="productos__reales-almohadas-descripcion">
+            <!-- codigo php -->
+            <p>
+            <?php
+              
+          
+            ?>
+            </p>
+          </div>
+          <div class="productos__reales-almohadas-precio">
+            <!-- codigo php -->
+            <span>
+            <?php
+              $queryPrecios = mysqli_query($conn, "SELECT id_producto, precio FROM atributos_productos");
+              
+              while($datosPrecios = mysqli_fetch_array($queryPrecios)){
+                
+                $datosPrecios = mysqli_fetch_all($queryPrecios, MYSQLI_ASSOC);
+
+                // print_r($datosPrecios);
+
+                $valuesInsert="-";
+
+                for ($i=0; $i < 4 ; $i++) {
+
+                  if(($datosPrecios[$i]['precio'] == 172.99) || ($datosPrecios[$i]['precio'] == 199.99)){
+                    echo $valuesInsert;
+                    $valuesInsert = substr_replace($valuesInsert, "", -1);
+                  }
+                  else{
+                    echo $datosPrecios[$i]['precio']; 
+                  }
+                  
+                }
+              
+              }      
+            ?>
+            </span>
+          </div>
+          <div class="productos__reales-almohadas-titulo">
+            <!-- codigo php -->
+            <h1><?php echo $datosAlmohadas['nombre']; ?></h1>
+          </div>
+        </div>          
+        <?php
+      
+          }
+            } 
+
+        ?>
+      </div>
+
     </section>
+
+    <?php include './html/php/footer.php';?>
 
   </main>
 

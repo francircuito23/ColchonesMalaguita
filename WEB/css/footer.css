@@ -4,6 +4,7 @@
 .kilimanjaro_area {
     position: relative;
     z-index: 1;
+    margin-top: 20em;
 	}
 	.foo_top_header_one {
     background-color: #15151e;

@@ -149,7 +149,7 @@ ion-icon {
     align-items: center;
     flex-direction: column;
     position: relative;
-    top: 10vh;
+    top: 20vh;
 }
 
 .productos__titulo{
@@ -159,6 +159,7 @@ ion-icon {
 }
 
 .productos__botones{
+    margin-top: 4em;
     width: 40vw;
     display: flex;
     justify-content: space-between;
@@ -208,7 +209,7 @@ ion-icon {
     margin: 2em;
 }
 
-.productos__reales-colchones{
+.productos__reales-colchones, .productos__reales-almohadas{
     width: 15em;
     height: auto;
     padding: 10px;
@@ -220,15 +221,16 @@ ion-icon {
 }
 
 .productos__reales-colchones-titulo,
-.productos__reales-colchones-titulo-2,
-.productos__reales-colchones-titulo-3,
+.productos__reales-almohadas-titulo,
+.productos__reales-bases-titulo,
 .productos__reales-colchones-titulo-4{
 
     font-family: 'Nanum Myeongjo', serif;
     cursor: pointer;
 }
 
-.productos__reales-colchones > .productos__reales-colchones-titulo{
+.productos__reales-colchones > .productos__reales-colchones-titulo,
+.productos__reales-almohadas > .productos__reales-almohadas-titulo{
     display: flex;
     justify-content: center;
     align-items: center;
@@ -253,18 +255,18 @@ ion-icon {
 } */
 
 
-.imagen__colchon{
+.imagen__colchon, .imagen__almohada{
     height: 200px;
     width: 200px;
 }
 
-.imagen__colchon img{
+.imagen__colchon img, .imagen__almohada img{
     height: 100%;
     width: 100%;
     object-fit: contain;
 }
 
-.productos__reales-colchones-descripcion{
+.productos__reales-colchones-descripcion, .productos__reales-almohadas-descripcion{
     font-family: 'Playfair Display', serif;
 }
 
@@ -286,7 +288,7 @@ ion-icon {
     background-color: rgba(0, 0, 0, 0.747);
 }
 
-.productos__reales-colchones-precio{
+.productos__reales-colchones-precio, .productos__reales-almohadas-precio{
     font-size: 1.5em;
     margin-top: 1em;
 }
