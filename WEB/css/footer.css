@@ -4,7 +4,7 @@
 .kilimanjaro_area {
     position: relative;
     z-index: 1;
-    margin-top: 20em;
+    /* margin-top: 20em; */
 	}
 	.foo_top_header_one {
     background-color: #15151e;
@@ -125,7 +125,7 @@ p, ul li, ol li {
     display: inline-block;
     font-size: 13px;
     margin-bottom: 3px;
-    padding: 7px 12px;
+    padding: 7px 8px;
 }
 .kilimanjaro_blog_area .kilimanjaro_date {
     color: #27ae60;
@@ -203,4 +203,17 @@ a{
 }
 a:hover{
     color: #274bae;
+}
+
+ion-icon[name="card-outline"]{
+    font-size: 12px;
+}
+
+.kilimanjaro_works .kilimanjaro_social_links{
+    font-size: 1.5em;
+}
+
+.img-bizum{
+    height: 20px;
+    width: 30px;
 }

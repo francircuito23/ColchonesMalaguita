@@ -13,7 +13,6 @@
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script src="../../node_modules/bootstrap/dist/css//bootstrap.min.css"></script>
     <script src="../../node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
@@ -22,6 +21,9 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
     <link rel="stylesheet" href="../css/footer.css">
     <script src="../js/home.js"></script>
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
     <title>Hipnos Bed</title>
 </head>
 <body>
@@ -145,7 +147,7 @@
 
       <?php
 
-        $queryProductos = mysqli_query($conn, "SELECT nombre, categoria, img, estado FROM `products` WHERE categoria = 'colchones' AND estado = 1");
+        $queryProductos = mysqli_query($conn, "SELECT id_producto, nombre, categoria, img, estado FROM `products` WHERE categoria = 'colchones' AND estado = 1");
 
         $queryAttrProductos = mysqli_query($conn, "SELECT DISTINCT p.*, a.id_producto, a.precio, a.altura, a.ancho, a.descripcion from atributos_productos a inner join products p on a.id_producto = p.id_producto where p.estado = 1");
 
@@ -163,7 +165,8 @@
         ?>
         <div class="productos__reales-colchones">
           <div class="productos__reales-colchones-imagen">
-            <a href="">
+            <!-- codigo php -->
+            <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
               <div class="imagen__colchon">
                 <?php
 
@@ -213,13 +216,14 @@
                     $valuesInsert = substr_replace($valuesInsert, "", -1);
                   }
                   else{
-                    echo $datosPrecios[$i]['precio']; 
+                    echo number_format($datosPrecios[$i]['precio'], 2, '.', ',');  
                   }
                   
                 }
               
               }      
             ?>
+            €
             </span>
           </div>
           <div class="productos__reales-colchones-titulo">
@@ -234,10 +238,11 @@
 
         ?>
       </div>
-
+      
+      <!-- Query almohadas -->
       <?php
 
-        $queryAlmohadas = mysqli_query($conn, "SELECT nombre, categoria, img, estado FROM `products` WHERE categoria = 'almohadas' AND estado = 1");
+        $queryAlmohadas = mysqli_query($conn, "SELECT id_producto, nombre, categoria, img, estado FROM `products` WHERE categoria = 'almohadas' AND estado = 1");
 
       ?>
 
@@ -251,7 +256,7 @@
         ?>
         <div class="productos__reales-almohadas">
           <div class="productos__reales-almohadas-imagen">
-            <a href="">
+            <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
               <div class="imagen__almohada">
                 <?php
 
@@ -292,22 +297,26 @@
 
                 // print_r($datosPrecios);
 
-                $valuesInsert="-";
+                $coma="-";
+                $precioIcono = "€";
 
                 for ($i=0; $i < 4 ; $i++) {
 
                   if(($datosPrecios[$i]['precio'] == 172.99) || ($datosPrecios[$i]['precio'] == 199.99)){
-                    echo $valuesInsert;
-                    $valuesInsert = substr_replace($valuesInsert, "", -1);
+                    echo $coma;
+                    $coma = substr_replace($coma, "", -1);
+                    
                   }
                   else{
-                    echo $datosPrecios[$i]['precio']; 
+                    echo number_format($datosPrecios[$i]['precio'], 2, '.', ',');  
+                    
                   }
                   
                 }
               
               }      
             ?>
+            €
             </span>
           </div>
           <div class="productos__reales-almohadas-titulo">
@@ -324,10 +333,24 @@
       </div>
 
     </section>
+    
+    <section class="video">
+      
+      <div class="video__titulo">
+        <h1 data-aos="fade-up">Experiencia de Relax única</h1>
+      </div>
 
+      <video src="../videos/colchonsito.mp4" muted loop autoplay></video>
+
+    </section>
+    
     <?php include './html/php/footer.php';?>
 
   </main>
+
+  <script>
+    AOS.init();
+  </script>
 
 </body>
 </html>

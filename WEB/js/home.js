@@ -76,8 +76,6 @@ window.onload = function () {
 
     botones[1].addEventListener('click',  function(){
 
-        console.log(categorias[0]);
-
         categorias[1].style = "";
         categorias[0].style.display = "none";
             

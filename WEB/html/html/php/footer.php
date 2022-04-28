@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <script src="../../../../node_modules/bootstrap/dist/css//bootstrap.min.css"></script>
     <script src="../../../../node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
@@ -12,7 +12,7 @@
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
     <link href="../../../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="../../../css/footer.css">
+    <link rel="stylesheet" href="../../../css/footer.css"> -->
     <title>Document</title>
 </head>
 <body>
@@ -111,11 +111,9 @@
                             <h5>Métodos de pago</h5>
                             <div class="kilimanjaro_works">
                                 <ul class="kilimanjaro_social_links">
-                                    <li><ion-icon name="card-outline"></ion-icon> Tarjeta de crédito o débito</li>
-                                    <li><a href="#"><i class="fa fa-twitter" aria-hidden="true"></i> Twitter</a></li>
-                                    <li><a href="#"><i class="fa fa-pinterest" aria-hidden="true"></i> Pinterest</a></li>
-                                    <li><a href="#"><i class="fa fa-youtube" aria-hidden="true"></i> YouTube</a></li>
-                                    <li><a href="#"><ion-icon name="logo-tiktok"></ion-icon> Tiktok</a></li>
+                                    <li><ion-icon name="caret-forward-outline"></ion-icon><a href="#"><ion-icon name="card-outline"></ion-icon> Tarjeta de crédito o débito</a></li>
+                                    <li><ion-icon name="caret-forward-outline"></ion-icon><a href="#"><ion-icon name="logo-paypal"></ion-icon> Paypal</a></li>
+                                    <li><ion-icon name="caret-forward-outline"></ion-icon><a href="#"><img class="img-bizum" src="https://www.bancomediolanum.es/images/productos/Bizum.png" alt="bizum">Bizum</a></li>
                                 </ul>
                             </div>
                         </div>

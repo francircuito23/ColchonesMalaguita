@@ -1,11 +1,15 @@
 @import url('https://fonts.googleapis.com/css2?family=Playfair+Display&family=Source+Code+Pro:wght@200&display=swap');
 @import url('https://fonts.googleapis.com/css2?family=Nanum+Myeongjo&display=swap');
+
 html{
-    /* height: 100%; */
+    box-sizing: border-box;
 }
 :root {
     --gray: #34495e;
     --darkgray: #2c3e50;
+}
+*, *::before, *::after {
+    box-sizing: inherit;
 }
 body{
     background: rgb(117, 80, 32);
@@ -291,6 +295,31 @@ ion-icon {
 .productos__reales-colchones-precio, .productos__reales-almohadas-precio{
     font-size: 1.5em;
     margin-top: 1em;
+}
+
+video{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    margin-top: 20em;
+    opacity: 0.8;
+}
+
+.video h1{
+    font-size: 60px;
+    font-family: 'Nanum Myeongjo', serif;
+    color: #fff;
+    z-index: 9999;
+}
+
+.video > .video__titulo{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 94vh;
 }
 
 @media (min-width: 100px) and (max-width: 500px) {
