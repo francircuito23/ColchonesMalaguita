@@ -24,6 +24,12 @@
     <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="crossorigin="anonymous" referrerpolicy="no-referrer"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.carousel.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/assets/owl.theme.default.min.css"/>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.0.0-beta.3/owl.carousel.min.js"></script>
+    
     <title>Hipnos Bed</title>
 </head>
 <body>
@@ -156,87 +162,93 @@
       ?>
 
       <div class="productos__reales">
-        <?php
-          $resultado = mysqli_num_rows($queryProductos);
-          
-            if($resultado > 0){
-              while($datos = mysqli_fetch_array($queryProductos)){
-                
-        ?>
-        <div class="productos__reales-colchones">
-          <div class="productos__reales-colchones-imagen">
-            <!-- codigo php -->
-            <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
-              <div class="imagen__colchon">
-                <?php
+          <div id="contCarruselBackground"></div>
+            <div class="container">
+                <div class="cards-wrapper owl-carousel">
+                    <!-- Aquí iría el PHP para hacer las card dinámicas, en función de lo que devuelva la base de datos -->    
+                    <?php
+                      $resultado = mysqli_num_rows($queryProductos);
+                      
+                        if($resultado > 0){
+                          while($datos = mysqli_fetch_array($queryProductos)){
+                            
+                    ?>
+                    <div class="productos__reales-colchones">
+                      <div class="productos__reales-colchones-imagen">
+                        <!-- codigo php -->
+                        <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
+                          <div class="imagen__colchon">
+                            <?php
 
-                  // $idProducto = $datos['id_producto'];
+                              // $idProducto = $datos['id_producto'];
+                              
+
+                              if($datos['img'] == null){
+
+                                $datos['img'] = "default-placeholder.png";
+
+                              }
+
+                            
+                            ?>
+                            <!-- codigo php -->
+                            <img src="<?php echo '../img/'.$datos['img']; ?>" alt="">
+                          </div>
+                        </a>
+                      </div>
+                      <div class="productos__reales-colchones-descripcion">
+                        <!-- codigo php -->
+                        <p>
+                        <?php
+                          
+                              
+                        ?>
+                        </p>
+                      </div>
+                      <div class="productos__reales-colchones-precio">
+                        <!-- codigo php -->
+                        <span>
+                        <?php
+                          $queryPrecios = mysqli_query($conn, "SELECT id_producto, precio FROM atributos_productos");
+                          
+                          while($datosPrecios = mysqli_fetch_array($queryPrecios)){
+                            
+                            $datosPrecios = mysqli_fetch_all($queryPrecios, MYSQLI_ASSOC);
+
+                            // print_r($datosPrecios);
+
+                            $valuesInsert="-";
+
+                            for ($i=0; $i < 4 ; $i++) {
+
+                              if(($datosPrecios[$i]['precio'] == 172.99) || ($datosPrecios[$i]['precio'] == 199.99)){
+                                echo $valuesInsert;
+                                $valuesInsert = substr_replace($valuesInsert, "", -1);
+                              }
+                              else{
+                                echo number_format($datosPrecios[$i]['precio'], 2, '.', ',');  
+                              }
+                              
+                            }
+                          
+                          }      
+                        ?>
+                        €
+                        </span>
+                      </div>
+                      <div class="productos__reales-colchones-titulo">
+                        <!-- codigo php -->
+                        <h1><?php echo $datos['nombre']; ?></h1> 
+                      </div>
+                    </div>          
+                    <?php
                   
+                      }
+                        } 
 
-                  if($datos['img'] == null){
-
-                    $datos['img'] = "default-placeholder.png";
-
-                  }
-
-                
-                ?>
-                <!-- codigo php -->
-                <img src="<?php echo '../img/'.$datos['img']; ?>" alt="">
+                    ?>
               </div>
-            </a>
-          </div>
-          <div class="productos__reales-colchones-descripcion">
-            <!-- codigo php -->
-            <p>
-            <?php
-              
-          
-            ?>
-            </p>
-          </div>
-          <div class="productos__reales-colchones-precio">
-            <!-- codigo php -->
-            <span>
-            <?php
-              $queryPrecios = mysqli_query($conn, "SELECT id_producto, precio FROM atributos_productos");
-              
-              while($datosPrecios = mysqli_fetch_array($queryPrecios)){
-                
-                $datosPrecios = mysqli_fetch_all($queryPrecios, MYSQLI_ASSOC);
-
-                // print_r($datosPrecios);
-
-                $valuesInsert="-";
-
-                for ($i=0; $i < 4 ; $i++) {
-
-                  if(($datosPrecios[$i]['precio'] == 172.99) || ($datosPrecios[$i]['precio'] == 199.99)){
-                    echo $valuesInsert;
-                    $valuesInsert = substr_replace($valuesInsert, "", -1);
-                  }
-                  else{
-                    echo number_format($datosPrecios[$i]['precio'], 2, '.', ',');  
-                  }
-                  
-                }
-              
-              }      
-            ?>
-            €
-            </span>
-          </div>
-          <div class="productos__reales-colchones-titulo">
-            <!-- codigo php -->
-            <h1><?php echo $datos['nombre']; ?></h1> 
-          </div>
-        </div>          
-        <?php
-      
-          }
-            } 
-
-        ?>
+            </div>
       </div>
       
       <!-- Query almohadas -->
@@ -259,17 +271,12 @@
             <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
               <div class="imagen__almohada">
                 <?php
-
-                  // $idProducto = $datos['id_producto'];
                   
-
                   if($datosAlmohadas['img'] == null){
 
                     $datosAlmohadas['img'] = "default-placeholder.png";
 
                   }
-
-                
                 ?>
                 <!-- codigo php -->
                 <img src="<?php echo '../img/'.$datosAlmohadas['img']; ?>" alt="">

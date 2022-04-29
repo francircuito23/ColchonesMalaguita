@@ -7,6 +7,18 @@ html{
 :root {
     --gray: #34495e;
     --darkgray: #2c3e50;
+        --fuentePrincipal: 'Roboto', sans-serif;
+    --fuenteSecundaria: 'Oswald', sans-serif;
+    --primario: #16161a;
+    --secundario: #2cb67d;
+    --claro: #fffffe;
+    --oscuro:#5b5b5b;
+    --negro: #010101;
+    --parrafos: #94a1b2;
+    --naranja: #f1a94e;
+    --azulito: #44b3c2;
+    --boton: #7f5af0;
+    --error: #b80000; 
 }
 *, *::before, *::after {
     box-sizing: inherit;
@@ -211,6 +223,9 @@ ion-icon {
     justify-content: space-around;
     align-items: center;
     margin: 2em;
+    /* display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-gap: 10px; */
 }
 
 .productos__reales-colchones, .productos__reales-almohadas{
@@ -311,7 +326,7 @@ video{
     font-size: 60px;
     font-family: 'Nanum Myeongjo', serif;
     color: #fff;
-    z-index: 9999;
+    z-index: 99;
 }
 
 .video > .video__titulo{
@@ -390,5 +405,109 @@ video{
         z-index: 1;
         padding-left: 20px;
         color: rgba(255, 255, 255, 0.801);
+    }
+}
+
+/* CARRUSEL PRODUCTOS */
+
+.container{
+    width: 90%;
+    margin: 0 auto;
+    padding: 2rem;
+    position: relative;
+}
+
+.owl-stage-outer{
+    padding-top: 2rem;
+}
+
+.cards-wrapper{
+   width: 100%;
+   margin: 0 auto;
+}
+.card{
+    width: 65%;
+    height: 20rem;
+    margin: 0 auto;
+    position: relative;
+}
+
+
+.owl-prev, .owl-next{
+    margin-right: 0;
+    display: flex;
+    /* background-color: rgba(0, 0, 0, 0.5); */
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    transition: all .5s ease-in;
+}
+.owl-prev>i, .owl-next>i{
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+}
+.owl-prev>i:hover,.owl-next>i:hover{
+    color: rgb(0, 0, 0);
+}
+.owl-next:hover, .owl-prev:hover{
+    background-color: var(--primario);
+    border-color: white;
+}
+
+.owl-next{
+    position: absolute;
+    top: 50%;
+    transform: translate(25%,-50%);
+    /* transform: translateY(-50%); */
+    right: -8px;
+}
+.owl-prev{
+    position: absolute;
+    top: 50%;
+    transform: translate(-50%,-50%);
+    left: -9px;
+}
+.owl-stage-outer{
+    padding-top: 2rem;
+}
+.owl-dots{
+            
+    display: inline-flex;
+    position: absolute;
+    left: 20px;
+
+
+}
+.owl-dot{
+    width: 40px;
+    height: 7px;
+    background-color: var(--secundario);
+    opacity: .5;
+    margin-right: 8px;
+    
+}
+.owl-dots .active{
+    opacity: 1;
+}
+@media (min-width:768px){
+
+    .cards-wrapper:hover .owl-next{
+        right: -55px;
+    }
+    .cards-wrapper:hover .owl-prev{
+        left: -63px;
+    }
+    .owl-prev, .owl-next{
+        width: 67px;
+        height: 67px;
+    }
+    .owl-prev i, .owl-next i{
+        font-size: 46px;
+    }
+    .owl-dots{
+        left: 46.5%;
+        bottom: -20px;
     }
 }
