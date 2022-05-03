@@ -1,3 +1,15 @@
+<?php
+
+    $numCarrito = 0;
+    if(isset($_SESSION['carrito']['productos'])){
+        $num_cart = count($_SESSION['carrito']['productos']);
+    }
+
+    session_start();
+    $producto = isset($_SESSION['carrito']['productos']) ? $_SESSION['carrito']['productos'] : null;
+
+    print_r($_SESSION);
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>

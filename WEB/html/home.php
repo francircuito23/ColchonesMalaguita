@@ -1,6 +1,25 @@
 <?php
   require '../php/conexion.php';
-  require '../../loginUsus/database.php'
+  require '../../loginUsus/database.php';
+
+  // Codigo Carrito
+
+  session_start();
+
+  $id = isset($_GET['id']) ? $GET['id'] : '';
+
+  //script para que se guarde el número de productos en el carrito en la sesión
+  $numCarrito = 0;
+  if(isset($_SESSION['carrito']['productos'])){
+    $numCarrito = count($_SESSION['carrito']['productos']);
+  }
+
+  print_r($_SESSION);
+
+  // if($id == ''){
+  //   echo 'Error al realizar la petición';
+  //   exit;
+  // }
 ?>
 
 <!DOCTYPE html>
@@ -53,7 +72,8 @@
           <ul class="header__nav__icons">
             <li><a href="#"><ion-icon name="search-outline"></ion-icon></a></li>
             <li><a href="#"><ion-icon name="person-outline"></ion-icon></a></li>
-            <li><a href="#"><ion-icon name="cart-outline"></ion-icon></a></li>
+            <li><a href="carrito.php"><ion-icon name="cart-outline"></ion-icon><span id="numero_carrito" class="badge bg-secondary"><?php echo $numCarrito; ?></span></a></li>
+            
           </ul>
         </div>
         <div class="header__icons__redes">
@@ -268,7 +288,7 @@
         ?>
         <div class="productos__reales-almohadas">
           <div class="productos__reales-almohadas-imagen">
-            <a href="producto.php?id=<?php echo $datos['id_producto'];?>">
+            <a href="producto.php?id=<?php echo $datosAlmohadas['id_producto'];?>">
               <div class="imagen__almohada">
                 <?php
                   
@@ -295,7 +315,9 @@
           <div class="productos__reales-almohadas-precio">
             <!-- codigo php -->
             <span>
-            <?php
+            <?php 
+
+              // Codigo Mostrar Productos
               $queryPrecios = mysqli_query($conn, "SELECT id_producto, precio FROM atributos_productos");
               
               while($datosPrecios = mysqli_fetch_array($queryPrecios)){
@@ -329,6 +351,9 @@
           <div class="productos__reales-almohadas-titulo">
             <!-- codigo php -->
             <h1><?php echo $datosAlmohadas['nombre']; ?></h1>
+          </div>
+          <div class="d-grid gap-3col-10 mx-auto">
+            <button class="btn btn-outline-primary"type="button" onclick="addProducto(<?php echo $datosAlmohadas['id_producto']; ?>)">Agregar al carrito</button>
           </div>
         </div>          
         <?php

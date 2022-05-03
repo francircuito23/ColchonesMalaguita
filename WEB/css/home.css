@@ -478,7 +478,6 @@ video{
     position: absolute;
     left: 20px;
 
-
 }
 .owl-dot{
     width: 40px;
@@ -491,6 +490,13 @@ video{
 .owl-dots .active{
     opacity: 1;
 }
+
+/* Carrito */
+
+#numero_carrito{
+    border-radius: 50px;
+}
+
 @media (min-width:768px){
 
     .cards-wrapper:hover .owl-next{

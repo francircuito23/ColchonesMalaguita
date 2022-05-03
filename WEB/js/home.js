@@ -112,8 +112,6 @@ window.onload = function () {
 
     //CARRITO
 
-    
-
 }
 
 //FADE CARRUSEL, Banners al inicio de la página
@@ -135,6 +133,30 @@ function fadeCarrusel(){
                 i=0;
             }
         },750); 
+}
+
+
+function addProducto(id){
+
+    let url='carrito.php'
+
+    let formData = new FormData()
+    formData.append('id',id)
+
+    fetch(url,{
+
+        method:'POST',
+        body:formData,
+        mode:'cors'
+        
+    }).then(response=>response.json())
+    .then (data =>{
+        if(data.ok){
+            let elemento = document.getElementById("numero_carrito")
+            elemento.innerHTML = data.numero
+        }
+    })
+
 }
 
 
