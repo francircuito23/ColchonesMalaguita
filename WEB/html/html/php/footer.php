@@ -10,9 +10,9 @@
     <script src="../../../../node_modules/bootstrap/dist/js/bootstrap.min.js"></script>
     <script type="module" src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js"></script>
-    <link href="../../../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" id="bootstrap-css">
+    <link href="../../../../node_modules/bootstrap/dist/css/bootstrap.css" rel="stylesheet" id="bootstrap-css"> -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.css">
-    <link rel="stylesheet" href="../../../css/footer.css"> -->
+    <!-- <link rel="stylesheet" href="../../../css/footer.css"> -->
     <title>Document</title>
 </head>
 <body>

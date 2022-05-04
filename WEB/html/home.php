@@ -72,7 +72,7 @@
           <ul class="header__nav__icons">
             <li><a href="#"><ion-icon name="search-outline"></ion-icon></a></li>
             <li><a href="#"><ion-icon name="person-outline"></ion-icon></a></li>
-            <li><a href="carrito.php"><ion-icon name="cart-outline"></ion-icon><span id="numero_carrito" class="badge bg-secondary"><?php echo $numCarrito; ?></span></a></li>
+            <li><a href="../php/pagar/checkout.php"><ion-icon name="cart-outline"></ion-icon><span id="numero_carrito" class="badge bg-secondary"><?php echo $numCarrito; ?></span></a></li>
             
           </ul>
         </div>
@@ -363,6 +363,33 @@
 
         ?>
       </div>
+
+      <script>
+
+        function addProducto(id){
+
+          let url='carrito.php'
+
+          let formData = new FormData()
+          formData.append('id',id)
+
+          fetch(url,{
+
+              method:'POST',
+              body:formData,
+              mode:'cors'
+              
+          }).then(response=>response.json())
+          .then (data =>{
+              if(data.ok){
+                let elemento = document.getElementById("numero_carrito")
+                elemento.innerHTML = data.numero
+              }
+          })
+
+        }
+
+      </script>
 
     </section>
     

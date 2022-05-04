@@ -7,7 +7,7 @@ html{
 :root {
     --gray: #34495e;
     --darkgray: #2c3e50;
-        --fuentePrincipal: 'Roboto', sans-serif;
+    --fuentePrincipal: 'Roboto', sans-serif;
     --fuenteSecundaria: 'Oswald', sans-serif;
     --primario: #16161a;
     --secundario: #2cb67d;
