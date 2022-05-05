@@ -6,6 +6,7 @@
 
   session_start();
 
+
   $id = isset($_GET['id']) ? $GET['id'] : '';
 
   //script para que se guarde el número de productos en el carrito en la sesión
@@ -15,6 +16,8 @@
   }
 
   print_r($_SESSION);
+
+  // session_destroy();
 
   // if($id == ''){
   //   echo 'Error al realizar la petición';
@@ -364,34 +367,34 @@
         ?>
       </div>
 
-      <script>
-
-        function addProducto(id){
-
-          let url='carrito.php'
-
-          let formData = new FormData()
-          formData.append('id',id)
-
-          fetch(url,{
-
-              method:'POST',
-              body:formData,
-              mode:'cors'
-              
-          }).then(response=>response.json())
-          .then (data =>{
-              if(data.ok){
-                let elemento = document.getElementById("numero_carrito")
-                elemento.innerHTML = data.numero
-              }
-          })
-
-        }
-
-      </script>
-
     </section>
+
+    <script>
+
+      function addProducto(id){
+
+        let url='carrito.php'
+
+        let formData = new FormData()
+        formData.append('id',id)
+
+        fetch(url,{
+
+          method: 'POST',
+          body: formData,
+          mode: 'cors'
+            
+        }).then(response=>response.json())
+        .then (data =>{
+            if(data.ok){
+              let elemento = document.getElementById("numero_carrito")
+              elemento.innerHTML = data.numero
+            }
+        })
+
+      }
+
+    </script>
     
     <section class="video">
       

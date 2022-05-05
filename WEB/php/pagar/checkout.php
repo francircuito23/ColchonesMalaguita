@@ -95,8 +95,7 @@
                             <td>
                                 <img src="<?php echo '../img/'.$img; ?>" alt="">
                             </td>
-                            <td><a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $id; ?>" data-bs-toogle="modal"
-                            data-bs-target="eliminaModal">Eliminar</a></td>
+                            <td><a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a></td>
 
                         </tr>
 
@@ -107,6 +106,8 @@
                 </table>
             </div>
         </div>
+
+        <!-- Función Actualizar -->
 
         <script>
             function actualizaCantidad(cantidad, id){
@@ -142,5 +143,66 @@
         </section>
 
     </main>
+
+    <!-- Modal -->
+    <div class="modal fade" id="eliminaModal" tabindex="-1" role="dialog" aria-labelledby="eliminaModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="eliminaModalLabel">Alerta</h5>
+                <button type="button" class="close" data-bs-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                ¿Desea eliminar el producto de la lista?
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button id="btn-elimina" type="button" class="btn btn-danger" onclick="eliminar()">Eliminar Producto</button>
+            </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Función eliminar -->
+
+    <script>
+
+        let eliminaModal = document.getElementById('eliminaModal')
+        eliminaModal.addEventListener('show.bs.modal', function(event){
+            let button = event.relatedTarget
+            let id = button.getAttribute('data-bs-id')
+            let buttonElimina = eliminaModal.querySelector('.modal-footer #btn-elimina') 
+            buttonElimina.value = id
+        })
+
+        function eliminar(){
+
+            let botonEliminarId = document.getElementById("btn-elimina").value
+
+            // let id = botonEliminarId.value
+
+            let url='actualizarCantidad.php'
+
+            let formData = new FormData()
+            formData.append('action', 'eliminar')
+            formData.append('id', botonEliminarId)
+
+            fetch(url,{
+
+                method: 'POST',
+                body: formData,
+                mode: 'cors'
+                
+            }).then(response=>response.json())
+            .then (data =>{
+                if(data.ok){
+                    location.reload()
+                }
+            })
+
+        }
+    </script>
 </body>
 </html>

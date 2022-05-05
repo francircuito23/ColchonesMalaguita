@@ -16,7 +16,7 @@
 
             }
 
-        $datos['numero']=count($_SESSION['carrito']['productos'][$id]);
+        $datos['numero'] = count($_SESSION['carrito']['productos']);
         $datos['ok'] = true;
 
     }else{
