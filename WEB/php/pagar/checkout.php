@@ -93,7 +93,7 @@
                                 $cantidad ?>" size="5" id="cantidad_<?php echo $id; ?>"onchange="actualizaCantidad(this.value, <?php echo $id; ?>)">
                             </td>
                             <td>
-                                <img src="<?php echo '../img/'.$img; ?>" alt="">
+                                <img src="<?php echo '../../img/'.$img; ?>" alt="">
                             </td>
                             <td><a href="#" id="eliminar" class="btn btn-warning btn-sm" data-bs-id="<?php echo $id; ?>" data-bs-toggle="modal" data-bs-target="#eliminaModal">Eliminar</a></td>
 
@@ -136,11 +136,13 @@
         </script>
 
         <!-- si el carrito tiene productos -->
-        <section class="boton-contenedor">
-            <article>
-                <a href="pago.php">Realizar pago</a>
-            </article>
-        </section>
+        <?php if ($lista_carrito != null){ ?> 
+            <section class="boton-contenedor">
+                <article>
+                    <a href="pago.php">Realizar pago</a>
+                </article>
+            </section>
+        <?php } ?>
 
     </main>
 

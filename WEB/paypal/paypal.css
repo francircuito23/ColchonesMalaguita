@@ -46,6 +46,10 @@ button {
     cursor: pointer;
 }
 
+button:hover{
+    background-color: #7bceb4;
+}
+
 .cancelado h2 {
   margin: 0;
 }

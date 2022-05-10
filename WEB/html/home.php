@@ -5,7 +5,7 @@
   // Codigo Carrito
 
   session_start();
-
+  // session_destroy();
 
   $id = isset($_GET['id']) ? $GET['id'] : '';
 
@@ -17,7 +17,7 @@
 
   print_r($_SESSION);
 
-  // session_destroy();
+
 
   // if($id == ''){
   //   echo 'Error al realizar la petición';

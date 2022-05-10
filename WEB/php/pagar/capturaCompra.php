@@ -42,7 +42,8 @@
 
                 foreach ($productos as $clave => $cantidad){
 
-                    $sql = $con->prepare("SELECT id, nombre, precio, descuento FROM productos WHERE id=? AND activo=1");
+                    // añadir precio y medida a la consulta
+                    $sql = $con->prepare("SELECT id_producto, nombre FROM products WHERE id_producto=? AND estado=1"); 
                     
                     $sql->execute([$clave]);
 

@@ -11,12 +11,24 @@
 article{
 
     padding: 20px 40px;
-    background-color: rgb(184, 255, 231);
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    background-color: #3887ff;
+    box-shadow: 10px 10px 10px rgba(73, 73, 73, 0.568);
 }
 
 a{
     text-decoration: none;
     font-family: 'Poppins', sans-serif;
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
+}
+
+a:hover{
+    color: rgba(255, 255, 255, 0.856);
+}
+
+a:visited{
+    color: rgba(235, 235, 235, 0.856);
+}
+
+img{
+    width: 20%; height: 30%;
 }
