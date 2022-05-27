@@ -49,13 +49,12 @@
 
                     $row_prod = $sql->fetch(PDO::FETCH_ASSOC);
 
-                    $precio = $row_prod['precio'];
-                    $descuento = $row_prod['descuento'];
-                    $precio_desc = $precio - (($precio * $descuento) / 100);
+                    //añadir el precio de la tabla para guardarlo
+                    // $precio = $row_prod['precio'];
 
-                    $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, precio, cantidad) VALUES (?,?,?,?,?)");
+                    $sql_insert = $con->prepare("INSERT INTO detalle_compra (id_compra, id_producto, nombre, cantidad) VALUES (?,?,?,?)");
 
-                    $sql_insert->execute([$id, $clave, $row_prod['nombre'], $precio_desc, $cantidad]);
+                    $sql_insert->execute([$id, $clave, $row_prod['nombre'], $cantidad]);
                 }
                 //incluir la ruta para enviar el mail
                 //include 'rutamail';

@@ -84,7 +84,7 @@
 
                                 }else{
 
-                                    $total=10;
+                                    $total=1;
                                     foreach($lista_carrito as $producto){
 
                                         $id = $producto['id_producto'];
@@ -98,7 +98,8 @@
 
                                     <td><img src="<?php echo '../../img/'.$img; ?>" alt=""> <?php echo $nombre; ?></td>
                                     <td class="text-end">
-                                        10€
+                                        <!-- meter precio de la tabla -->
+                                        1€
                                     </td>
 
                                 </tr>
